@@ -1,0 +1,30 @@
+{
+  "name": "remark-lint-keep-a-changelog",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build",
+    "lint": "remark .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "exports": "./index.js",
+  "files": [
+    "index.d.ts",
+    "index.d.ts.map",
+    "index.js"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mdast": "^4.0.3",
+    "devlop": "^1.1.0",
+    "remark-cli": "^12.0.1",
+    "remark-lint": "^10.0.0",
+    "unified-lint-rule": "^3.0.0",
+    "unist-util-visit": "^5.0.0",
+    "vfile-location": "^5.0.2"
+  }
+}
