@@ -1,30 +1,60 @@
 {
   "name": "remark-lint-keep-a-changelog",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc --build --clean && tsc --build",
-    "lint": "remark .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "type": "module",
-  "exports": "./index.js",
-  "files": [
-    "index.d.ts",
-    "index.d.ts.map",
-    "index.js"
+  "keywords": [
+    "lint",
+    "remark"
   ],
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/perryd01/remark-lint-keep-a-changelog"
+  },
   "license": "ISC",
+  "type": "module",
+  "main": "./dist/index.js",
+  "source": "./index.ts",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/*"
+  },
+  "baseUrl": "./src",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "dev": "tsc -w",
+    "release": "semantic-release",
+    "remark-lint": "NODE_OPTIONS='--experimental-specifier-resolution=node' remark . --verbose"
+  },
   "dependencies": {
-    "@types/mdast": "^4.0.3",
-    "devlop": "^1.1.0",
-    "remark-cli": "^12.0.1",
-    "remark-lint": "^10.0.0",
-    "unified-lint-rule": "^3.0.0",
-    "unist-util-visit": "^5.0.0",
-    "vfile-location": "^5.0.2"
+    "find-up": "7.0.0",
+    "minimatch": "9.0.4",
+    "unified-lint-rule": "3.0.0",
+    "yaml": "2.4.2"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "10.0.3",
+    "@semantic-release/npm": "12.0.1",
+    "@types/eslint": "8.56.10",
+    "@types/json-schema": "7.0.15",
+    "@types/mdast": "4.0.4",
+    "@types/minimatch": "5.1.2",
+    "@types/node": "20.12.12",
+    "@types/unist": "3.0.2",
+    "@typescript-eslint/eslint-plugin": "7.9.0",
+    "@typescript-eslint/parser": "7.9.0",
+    "prettier": "3.2.5",
+    "remark": "15.0.1",
+    "remark-cli": "12.0.1",
+    "rimraf": "^5.0.7",
+    "semantic-release": "23.1.1",
+    "typescript": "5.4.5",
+    "unified": "11.0.4",
+    "vfile-message": "4.0.2"
   }
 }
