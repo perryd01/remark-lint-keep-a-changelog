@@ -24,15 +24,20 @@ const checkFunc: AbstractCheckFunction = (items: any[], file?: any) => {
     validChangeHeading(node) ? [] : [node]
   );
 
-  return invalidChangeHeadings.map((node) => ({
-    passed: false,
-    node,
-  }));
-};
+  const result = invalidChangeHeadings.map((node) => {
+    const textFound = node?.children?.at(0)?.value
+    return {
+      passed: false,
+      message: `Expected any value of \`${allowedChangeTypes.join(", ")}\`, but found \`${textFound}\``,
+      node,
+    }
+  })
+
+  return result
+}
 
 const headingChanged: AbstractRule = {
   name: "heading-changed",
-  message: `Expected any value of \`${allowedChangeTypes.join(", ")}\``,
   check: checkFunc,
 };
 

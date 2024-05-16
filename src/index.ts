@@ -3,6 +3,9 @@ import type { Root } from "mdast";
 import RuleValidator from "./runner/rule-validator.js";
 
 import HeadingChanged from "./rules/heading-changed.js";
+import HeadingTitle from "./rules/heading-title.js";
+
+import type { TreeNode } from "types/node";
 
 const remarkLintKeepAChangelog = lintRule(
   {
@@ -10,12 +13,12 @@ const remarkLintKeepAChangelog = lintRule(
     origin: "remark-lint-keep-a-changelog",
   },
   function (tree: Root, file: any, options: any) {
-    const { children } = tree;
+    const children = tree.children as TreeNode[]
 
     const result = RuleValidator({
       tree: children,
       file,
-      rules: [HeadingChanged],
+      rules: [HeadingChanged, HeadingTitle],
     });
 
     result.forEach((r) => {

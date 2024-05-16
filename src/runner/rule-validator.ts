@@ -1,7 +1,8 @@
 import type { AbstractRule, AbstractRuleResult } from "../rules/abstract-rule";
+import type {TreeNode} from "../types/node"
 
 type RuleValidatorParams = {
-  tree: any;
+  tree: TreeNode[];
   file?: any;
   rules: AbstractRule[];
 };
@@ -15,11 +16,9 @@ function ruleValidator({
 
     const r = result.map((r) => {
       return {
+        ...r,
         name: rule.name,
-        message: rule.message,
         check: rule.check,
-        passed: r.passed,
-        node: r.node,
       };
     }) as AbstractRuleResult[];
 

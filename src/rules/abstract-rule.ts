@@ -1,18 +1,20 @@
-export interface AbstractRule {
+import { TreeNode } from "types/node";
+import { VFile } from "unified-lint-rule/lib";
+
+export type AbstractRule = {
   name: string;
   check: AbstractCheckFunction;
+  
+}
+
+export type AbstractCheckFunctionResult = {
+  node: Record<string, any>;
+  passed: boolean;
   message: string;
 }
-
 export type AbstractCheckFunction = (
-  items: any[],
+  items: TreeNode[],
   file?: any
-) => Array<{
-  passed: boolean;
-  node: any;
-}>;
+) => AbstractCheckFunctionResult[];
 
-export interface AbstractRuleResult extends AbstractRule {
-  passed: boolean;
-  node: any;
-}
+export type AbstractRuleResult = AbstractRule & AbstractCheckFunctionResult
